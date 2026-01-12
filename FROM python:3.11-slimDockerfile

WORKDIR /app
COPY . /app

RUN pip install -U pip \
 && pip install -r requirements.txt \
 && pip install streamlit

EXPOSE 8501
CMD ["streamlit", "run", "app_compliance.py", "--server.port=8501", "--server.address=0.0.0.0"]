@@ -1,0 +1,11 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+COPY . /app
+
+RUN pip install -U pip \
+ && pip install -r requirements.txt \
+ && pip install streamlit
+
+EXPOSE 8501
+CMD ["streamlit", "run", "app_compliance.py", "--server.port=8501", "--server.address=0.0.0.0"]
